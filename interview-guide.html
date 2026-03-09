@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guião de Entrevista — Sandra Nassula</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --cream: #faf8f4;
+    --warm: #e8e0d4;
+    --accent: #b8860b;
+    --accent-light: #daa520;
+    --accent-bg: #fdf6e3;
+    --green: #2d6a4f;
+    --green-light: #d8f3dc;
+    --soft-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    --card-radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 48px 32px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184,134,11,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(45,106,79,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .header p {
+    font-size: 1rem;
+    opacity: 0.7;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .header .badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 18px;
+    border: 1px solid rgba(184,134,11,0.5);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--accent-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* Navigation */
+  .nav {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    background: #fff;
+    border-bottom: 1px solid var(--warm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--soft-shadow);
+  }
+
+  .nav button {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 12px;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+
+  .nav button:hover { color: var(--ink); background: var(--accent-bg); }
+  .nav button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: var(--accent-bg);
+    font-weight: 600;
+  }
+
+  /* Content */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .section { display: none; animation: fadeUp 0.4s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: var(--card-radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--soft-shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+  }
+
+  .card:hover { transform: translateY(-2px); }
+
+  .card-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-label .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .card p, .card li {
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Script box */
+  .script-box {
+    background: linear-gradient(135deg, var(--accent-bg) 0%, #fff 100%);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--card-radius) var(--card-radius) 0;
+    padding: 24px 28px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #333;
+    font-size: 0.93rem;
+    line-height: 1.9;
+    position: relative;
+  }
+
+  .script-box::before {
+    content: '"';
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    color: var(--accent);
+    opacity: 0.3;
+    position: absolute;
+    top: -5px;
+    left: 12px;
+    line-height: 1;
+  }
+
+  .script-box .script-text {
+    padding-left: 28px;
+  }
+
+  /* Tip */
+  .tip {
+    background: var(--green-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    color: var(--green);
+  }
+
+  .tip-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Toggle */
+  .toggle-wrap {
+    margin-bottom: 16px;
+  }
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 24px;
+    background: #fff;
+    border: 1px solid var(--warm);
+    border-radius: var(--card-radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--soft-shadow);
+  }
+
+  .toggle-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .toggle-btn .arrow {
+    transition: transform 0.3s;
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+
+  .toggle-btn.open .arrow { transform: rotate(180deg); }
+
+  .toggle-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    background: #fff;
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    margin-top: -8px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+  }
+
+  .toggle-content.open {
+    max-height: 2000px;
+    padding: 20px 24px 24px;
+    border-color: var(--warm);
+    border-top: none;
+  }
+
+  /* Progress */
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid var(--warm);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--warm);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 100px;
+    transition: width 0.5s ease;
+  }
+
+  .progress-label {
+    font-size: 0.75rem;
+    color: #888;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* Checklist */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0ece4;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--warm);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 2px;
+    font-size: 0.75rem;
+  }
+
+  .check-item.checked .check-box {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+
+  .check-item.checked .check-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .check-text {
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--warm);
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 600px) {
+    .nav button { font-size: 0.7rem; padding: 12px 8px; }
+    .card { padding: 20px; }
+    .content { padding: 24px 16px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Guião de Entrevista</h1>
+  <p>Sandra Nassula · Gestora de Projetos</p>
+  <div class="badge">Preparação Interativa</div>
+</div>
+
+<nav class="nav" id="nav">
+  <button class="active" onclick="showSection(0)">Apresentação</button>
+  <button onclick="showSection(1)">Experiência</button>
+  <button onclick="showSection(2)">Competências</button>
+  <button onclick="showSection(3)">Perguntas</button>
+  <button onclick="showSection(4)">Fecho</button>
+  <button onclick="showSection(5)">Checklist</button>
+</nav>
+
+<div class="content" id="content">
+
+  <!-- 0: APRESENTAÇÃO -->
+  <div class="section active" data-section="0">
+    <div class="section-title">A Tua Apresentação</div>
+    <p class="section-subtitle">Os primeiros 2 minutos que definem o tom da entrevista</p>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Pitch de 60 segundos</div>
+      <div class="script-box">
+        <div class="script-text">
+          Sou a Sandra Nassula, profissional de operações e gestão de projetos com sede em Sintra. Tenho um MBA em Gestão de Projetos e mais de 13 anos de experiência prática nesta área — tanto em contexto corporativo, onde trabalho atualmente na Delta Cafés, como em projetos sociais no Rotaract Club.<br><br>
+          Na Delta, faço a ponte entre as operações e a melhoria contínua: monitorizei a implementação de um novo CRM, reduzi em 20% o tempo de processamento de encomendas e aumentei a eficiência operacional em 15%. A minha abordagem passa por identificar problemas, estruturar soluções e medir resultados.<br><br>
+          Estou à procura de uma oportunidade onde possa aplicar esta experiência de forma mais focada na gestão de projetos — e é por isso que esta posição me entusiasmou.
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tip-icon">💡</span>
+        <span><strong>Dica:</strong> Adapta a última frase à empresa específica. Pesquisa antes o que a empresa faz e menciona algo concreto que te atraiu.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Números que impressionam</div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">20%</div>
+          <div class="stat-label">↓ Tempo processamento</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15%</div>
+          <div class="stat-label">↑ Eficiência operacional</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">13+</div>
+          <div class="stat-label">Anos gestão projetos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">MBA</div>
+          <div class="stat-label">Gestão de Projetos</div>
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tip-icon">💡</span>
+        <span><strong>Dica:</strong> Memoriza estes 4 números. São os teus argumentos mais fortes e deves mencioná-los naturalmente ao longo da conversa.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1: EXPERIÊNCIA -->
+  <div class="section" data-section="1">
+    <div class="section-title">A Tua Experiência</div>
+    <p class="section-subtitle">Como falar de cada etapa de forma estratégica</p>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>🔶 Delta Cafés — Analista de Operações e Projetos <em>(atual)</em></span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <h3>Narrativa recomendada:</h3>
+        <div class="script-box">
+          <div class="script-text">
+            Na Delta, comecei como operadora de contact center e evoluí para analista de operações — o que reflete a minha capacidade de crescer e assumir mais responsabilidade. Atualmente, faço monitorização de encomendas para grandes contas via Dynamics 365 e SAP, planeio os recursos da equipa técnica de campo, e analiso workflows para identificar melhorias.<br><br>
+            Dois projetos que destaco: participei na implementação de um novo CRM, desde o levantamento de requisitos até à validação pós-rollout, o que reduziu o tempo de processamento em 20%. E liderei um mapeamento de processos que resultou num aumento de 15% na eficiência operacional.
+          </div>
+        </div>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Método STAR:</strong> Situação → a equipa usava processos manuais. Tarefa → mapear e melhorar. Ação → mapeei o estado atual, priorizei melhorias, acompanhei indicadores. Resultado → +15% eficiência.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>🔶 Delta Cafés — Contact Center (2022–2024)</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <h3>Narrativa recomendada:</h3>
+        <div class="script-box">
+          <div class="script-text">
+            Como operadora de contact center, não me limitei ao atendimento — identifiquei oportunidades de melhoria e agi. Criei de raiz um programa de onboarding para novos colaboradores, com manuais de formação e ferramentas de validação. Isto mostrou a minha capacidade de ver necessidades e transformá-las em projetos concretos.
+          </div>
+        </div>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Mensagem-chave:</strong> Mesmo numa função operacional, demonstraste iniciativa e visão de melhoria — competências essenciais de um project manager.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>🔶 Repsol — Operadora de Caixa (2017–2021)</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <h3>Narrativa recomendada:</h3>
+        <div class="script-box">
+          <div class="script-text">
+            Na Repsol foi a minha primeira experiência profissional em Portugal. Além do atendimento ao cliente, contribuí para melhorar os processos de gestão de caixa — reduzi discrepâncias e aumentei a velocidade das transações. Mostrou-me a importância do rigor e da melhoria contínua mesmo em contextos do dia-a-dia.
+          </div>
+        </div>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Nota:</strong> Sê breve com esta experiência. Menciona só se perguntarem. O foco deve estar na Delta e no Rotaract.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>🔶 Rotaract Club — 13+ anos de voluntariado</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <h3>Narrativa recomendada:</h3>
+        <div class="script-box">
+          <div class="script-text">
+            O Rotaract é onde mais pratiquei gestão de projetos de forma completa. Ao longo de mais de 13 anos, liderei projetos sociais e formativos do início ao fim: desde a definição de objetivos e planeamento, passando pela gestão de stakeholders e recursos, até à avaliação de resultados. É uma experiência real e contínua que complementa a minha formação e o meu trabalho na Delta.
+          </div>
+        </div>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Força diferenciadora:</strong> 13 anos de gestão de projetos voluntários é raro e demonstra paixão genuína pela área. Usa este argumento com confiança.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2: COMPETÊNCIAS -->
+  <div class="section" data-section="2">
+    <div class="section-title">Competências-Chave</div>
+    <p class="section-subtitle">Como demonstrar cada competência com exemplos concretos</p>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Gestão de Projetos</div>
+      <h3>Como provo esta competência?</h3>
+      <ul>
+        <li><strong>CRM na Delta:</strong> Participei em todo o ciclo — requisitos, rollout, validação. Resultado: -20% tempo de processamento.</li>
+        <li><strong>Rotaract:</strong> +13 anos a planear, executar e avaliar projetos sociais de forma autónoma.</li>
+        <li><strong>MBA:</strong> Formação estruturada em PMBOK, Scrum, Kanban e gestão de riscos.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Melhoria de Processos</div>
+      <h3>Como provo esta competência?</h3>
+      <ul>
+        <li><strong>Mapeamento na Delta:</strong> Analisei o estado atual, priorizei melhorias e monitorizei KPIs → +15% eficiência.</li>
+        <li><strong>Onboarding:</strong> Criei um programa estruturado de formação para novos colaboradores.</li>
+        <li><strong>Repsol:</strong> Melhorei processos de caixa, reduzindo discrepâncias.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Ferramentas Técnicas</div>
+      <h3>O que domino?</h3>
+      <ul>
+        <li><strong>CRM:</strong> Microsoft Dynamics 365 — uso diário para monitorização e controlo.</li>
+        <li><strong>ERP:</strong> SAP — gestão de encomendas e processos operacionais.</li>
+        <li><strong>Project:</strong> MS Project, Trello, Jira, Notion — planeamento e acompanhamento.</li>
+        <li><strong>Metodologias:</strong> PMBOK, Scrum, Kanban — formação e prática real.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Soft Skills</div>
+      <h3>Exemplos prontos a usar</h3>
+      <ul>
+        <li><strong>Comunicação:</strong> "Na Delta, faço a ponte entre equipas comerciais e operacionais todos os dias."</li>
+        <li><strong>Liderança:</strong> "No Rotaract, liderei equipas de voluntários em projetos com prazos e orçamentos reais."</li>
+        <li><strong>Adaptabilidade:</strong> "Emigrei para Portugal e reconstruí a minha carreira, evoluindo de operadora a analista."</li>
+        <li><strong>Stakeholders:</strong> "Trabalho diretamente com Grandes Contas Nacionais e Hotelaria & Turismo."</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3: PERGUNTAS COMUNS -->
+  <div class="section" data-section="3">
+    <div class="section-title">Perguntas Comuns</div>
+    <p class="section-subtitle">Respostas preparadas para as perguntas mais frequentes</p>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Porque quer mudar para gestão de projetos?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <div class="script-box">
+          <div class="script-text">
+            Na verdade, já faço gestão de projetos — mas de forma integrada nas minhas funções operacionais. Na Delta, liderei a implementação de um CRM e um projeto de melhoria de processos. No Rotaract, geri projetos completos durante mais de 13 anos. O meu MBA formalizou esta vocação. Agora quero que a gestão de projetos seja o centro do meu trabalho, não apenas uma parte dele.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Qual foi o projeto mais desafiante que geriu?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <div class="script-box">
+          <div class="script-text">
+            A implementação do novo CRM na Delta. O desafio foi gerir a mudança: havia resistência da equipa, prazos apertados e requisitos que evoluíam. A minha abordagem foi envolver as pessoas desde o início, documentar bem os requisitos e fazer validações iterativas. O resultado foi uma redução de 20% no tempo de processamento e uma equipa que adotou a ferramenta com confiança.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Qual é o seu ponto fraco?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <div class="script-box">
+          <div class="script-text">
+            O meu inglês ainda está em nível B2 — mas estou ativamente a melhorar. É uma prioridade e tenho trabalhado nisso de forma consistente. Acredito que a melhor forma de progredir é usá-lo no dia-a-dia profissional, e procuro oportunidades para isso.
+          </div>
+        </div>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Nota:</strong> Mostra autoconsciência, reconhece o gap e apresenta uma ação concreta. Nunca uses um "ponto fraco disfarçado de qualidade".</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Porque devemos escolhê-la?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <div class="script-box">
+          <div class="script-text">
+            Porque trago uma combinação rara: experiência operacional real — sei como as coisas funcionam no terreno — com formação e prática em gestão de projetos. Não sou alguém que vai gerir projetos de forma teórica. Já implementei CRMs, já melhorei processos com resultados medidos, e já liderei projetos durante mais de 13 anos no Rotaract. Além disso, tenho uma motivação genuína: esta transição não é um acaso, é uma decisão pensada e preparada.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Onde se vê daqui a 5 anos?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <div class="script-box">
+          <div class="script-text">
+            Vejo-me como project manager sénior, a liderar projetos cada vez mais complexos e a contribuir para a estratégia da organização. Quero continuar a crescer — possivelmente investir numa certificação PMP — e tornar-me uma referência na equipa em melhoria de processos e entrega de resultados.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" onclick="toggleCard(this)">
+        <span>❓ "Tem alguma pergunta para nós?"</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="toggle-content">
+        <h3>Perguntas inteligentes para fazer:</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0 8px 20px; position:relative; font-size:0.92rem; color:#444;"><span style="position:absolute; left:0; color:#b8860b; font-weight:600;">1.</span> "Quais são os projetos prioritários para esta função nos próximos 6 meses?"</li>
+          <li style="padding:8px 0 8px 20px; position:relative; font-size:0.92rem; color:#444;"><span style="position:absolute; left:0; color:#b8860b; font-weight:600;">2.</span> "Que metodologias de gestão de projetos utilizam atualmente?"</li>
+          <li style="padding:8px 0 8px 20px; position:relative; font-size:0.92rem; color:#444;"><span style="position:absolute; left:0; color:#b8860b; font-weight:600;">3.</span> "Como é medido o sucesso nesta posição?"</li>
+          <li style="padding:8px 0 8px 20px; position:relative; font-size:0.92rem; color:#444;"><span style="position:absolute; left:0; color:#b8860b; font-weight:600;">4.</span> "Qual é a dimensão e estrutura da equipa com quem vou trabalhar?"</li>
+        </ul>
+        <div class="tip">
+          <span class="tip-icon">💡</span>
+          <span><strong>Regra:</strong> Faz sempre pelo menos 2 perguntas. Mostra que fizeste pesquisa e que estás genuinamente interessada.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4: FECHO -->
+  <div class="section" data-section="4">
+    <div class="section-title">Fecho da Entrevista</div>
+    <p class="section-subtitle">Como terminar com impacto e deixar uma impressão duradoura</p>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Frase de encerramento</div>
+      <div class="script-box">
+        <div class="script-text">
+          Obrigada pela oportunidade de conversar convosco. Esta conversa reforçou o meu entusiasmo pela posição — vejo um alinhamento claro entre o que procuram e o que posso contribuir. Estou disponível para qualquer informação adicional e fico a aguardar os próximos passos com expectativa.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Mensagem de follow-up (email)</div>
+      <h3>Envia dentro de 24h após a entrevista:</h3>
+      <div class="script-box">
+        <div class="script-text">
+          Assunto: Obrigada pela entrevista — [Nome da Posição]<br><br>
+          Boa tarde [Nome],<br><br>
+          Obrigada pelo tempo e pela conversa de hoje. Foi muito positivo conhecer melhor a equipa e os desafios da posição.<br><br>
+          Saí da entrevista ainda mais motivada — especialmente por [mencionar algo específico que foi discutido]. Acredito que a minha experiência em [mencionar competência relevante] pode contribuir de forma concreta para os vossos objetivos.<br><br>
+          Fico disponível para qualquer informação adicional.<br><br>
+          Com os melhores cumprimentos,<br>
+          Sandra Nassula
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tip-icon">💡</span>
+        <span><strong>Essencial:</strong> Personaliza sempre com algo específico que foi dito na entrevista. Isto mostra atenção e genuíno interesse.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5: CHECKLIST -->
+  <div class="section" data-section="5">
+    <div class="section-title">Checklist Final</div>
+    <p class="section-subtitle">Confirma que tens tudo preparado antes da entrevista</p>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Antes da entrevista</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Pesquisei a empresa (site, notícias recentes, LinkedIn)</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Li a descrição da vaga e identifiquei palavras-chave</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Pratiquei o pitch de 60 segundos em voz alta</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Memorizei os 4 números-chave (20%, 15%, 13+, MBA)</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Preparei exemplos STAR para cada competência</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Preparei 2–3 perguntas para fazer ao entrevistador</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Roupa profissional escolhida e pronta</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">CV impresso (2 cópias) e bloco de notas</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>No dia</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Chegar 10 minutos antes</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Telemóvel em silêncio</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Contacto visual e aperto de mão firme</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Tomar notas durante a entrevista</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Pedir nome/email do entrevistador para follow-up</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label"><span class="dot"></span>Depois da entrevista</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Enviar email de agradecimento (dentro de 24h)</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Anotar o que correu bem e o que posso melhorar</span>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box">✓</div>
+        <span class="check-text">Conectar no LinkedIn com o entrevistador</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="progress-bar">
+  <span class="progress-label" id="progressLabel">1 / 6</span>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width: 16.6%"></div>
+  </div>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const navBtns = document.querySelectorAll('.nav button');
+  let current = 0;
+
+  function showSection(idx) {
+    current = idx;
+    sections.forEach((s, i) => s.classList.toggle('active', i === idx));
+    navBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.getElementById('progressLabel').textContent = (idx + 1) + ' / 6';
+    document.getElementById('progressFill').style.width = ((idx + 1) / 6 * 100) + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleCard(btn) {
+    const content = btn.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    content.classList.toggle('open', !isOpen);
+  }
+
+  function toggleCheck(item) {
+    item.classList.toggle('checked');
+  }
+</script>
+
+</body>
+</html>
